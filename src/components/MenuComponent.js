@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardImgOverlay, CardText, CardBody,
-    CardTitle } from 'reactstrap';
-
+import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
+import DishDetail  from './DishdetailComponent';
 class Menu extends Component {
 
     constructor(props) {
@@ -16,24 +15,7 @@ class Menu extends Component {
         this.setState({ selectedDish: dish});
     }
 
-    renderDish(dish) {//muestra descripcion e imagen de un platillo
-        if (dish != null)
-            return(
-                <Card>
-                    <CardImg top src={dish.image} alt={dish.name} />
-                    <CardBody>
-                      <CardTitle>{dish.name}</CardTitle>
-                      <CardText>{dish.description}</CardText>
-                    </CardBody>
-                </Card>
-            );
-        else
-
-            return(
-
-                <div> </div>
-            );
-    }
+    
 
     render() {
         
@@ -55,11 +37,10 @@ class Menu extends Component {
                 <div className="row">
                     {menu}{/*Muestro el array.Y queda esperando que toque alguno para cambiar el selectedDish actual*/}
                 </div>
-                <div className="row">
-                  <div  className="col-12 col-md-5 m-1">
-                    {this.renderDish(this.state.selectedDish)}{/*Aqui se renderiza despues de tocar algo y si no toque ninguno queda null y en consecuencia no rederiza nada*/}
-                  </div>
-                </div>
+               
+                     {console.log(this.state.selectedDish)}                  
+                    <DishDetail  dishes={this.state.selectedDish}/>{/*Aqui se renderiza despues de tocar algo y si no toque ninguno queda null y en consecuencia no rederiza nada*/}
+               
             </div>
         );
     }
