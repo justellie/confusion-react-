@@ -30,28 +30,31 @@ renderDish(dish) {//muestra descripcion e imagen de un platillo
 
 
 
+renderComments(dish) {        
+        if (dish!=null) {   
+            const dishComments = dish.comments.map(commentDish => {                  
+                return (
+                      <ul className="list-unstyled">
+                          <li>
+                            <p>{commentDish.comment}</p>
+                            <p>--{commentDish.author}, {new Intl.DateTimeFormat("en-US", {year: 'numeric', month: 'long', day: 'numeric'}).format(new Date(commentDish.date))}</p>  
+                          </li>
+                        </ul>  
+                ); 
+            }); 
+          return(
+          <div>
+            <h4>Comments</h4> 
+              {dishComments} 
+          </div>
 
-renderComments(comments) {//muestra descripcion e imagen de un platillo
-        if (comments != null){
-          const aux = comments.map((comment) => {     {/*Esto es para llenar el array menu que va a salir en pantalla usando la propiedad dishes que fue pasada en el archivo app.js*/}
-            return (
-              <li>
-                    <p>{comment.comment}</p>
-                    <p>-- {comment.author} , {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}</p>
-              </li>
-            );
-        });
-        return({aux});
-          }
-        else
-
-            return(
-
-                    
-                <div> </div>                
-            );
-    }
-
+          );                      
+        } else {
+            return (<div></div>);
+        }    
+    
+    
+      }
 
 
 
@@ -67,11 +70,14 @@ renderComments(comments) {//muestra descripcion e imagen de un platillo
 
 
     render() {
-        console.log(this.renderComments());     
+          
         return (
                 <div className="row">
                   <div  className="col-12 col-md-5 m-1">
                     {this.renderDish(this.props.dishes)}
+                  </div>
+                  <div  className="col-12 col-md-5 m-1">
+                    {this.renderComments(this.props.dishes)}
                   </div>
                 </div>
 
