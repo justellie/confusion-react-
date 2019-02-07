@@ -4,7 +4,8 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';//importando bootstrap 
-
+import 'font-awesome/css/font-awesome.min.css';
+import 'bootstrap-social/bootstrap-social.css';
 
 ReactDOM.render(<App />, document.getElementById('root'));//Esto significa renderizar el componente App y "pintalo" en donde esta el elemento "root"
 
