@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { Card, CardImg, CardText, CardBody,CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import CommentForm from './CommentForm';
  function RenderDish({dish}) {
     
        if (dish != null)
@@ -34,8 +35,12 @@ import { Link } from 'react-router-dom';
                             <li>
                               <p>{commentDish.comment}</p>
                               <p>--{commentDish.author}, {new Intl.DateTimeFormat("en-US", {year: 'numeric', month: 'long', day: 'numeric'}).format(new Date(commentDish.date))}</p>  
+                               
                             </li>
                           </ul>
+                                        
+                          
+                          
 
                 ); 
             }); 
@@ -43,6 +48,9 @@ import { Link } from 'react-router-dom';
           <div className="col-12 col-md-5 m-1">
             <h4>Comments</h4> 
               {dishComments} 
+              <CommentForm/> 
+              
+              
           </div>
 
           );                      
